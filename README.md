@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/license-MPL%202.0-blue.svg?style=flat-square)](https://github.com/jomonjohnn/logan/blob/master/LICENSE.txt)
+
 # logan 
 Just another Log Analyzer/parser. Tired of analyzing large log files with regex on sublime and Logan was born as a quick hack.
 
