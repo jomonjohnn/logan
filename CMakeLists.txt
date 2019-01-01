@@ -44,7 +44,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" ST
 endif()
 
 #find_package(package_name version REQUIRED)
-find_package( Boost 1.60 COMPONENTS system filesystem program_options REQUIRED )
+find_package( Boost 1.58 COMPONENTS system filesystem program_options REQUIRED )
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 

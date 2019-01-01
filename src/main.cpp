@@ -151,7 +151,7 @@ int main ( int argc, char** argv ) {
             
             std::string line;
             std::smatch matches_line;
-            std::atomic_bool done = false;
+            std::atomic_bool done{false};
 
             // Pop from queue
             do{
