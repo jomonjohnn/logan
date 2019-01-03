@@ -34,6 +34,7 @@
 //local
 #include <inputHandler.hpp>    // ifstream abstraction
 #include <concurrentQueue.hpp> // conurrent queue
+#include <GitSHA1.h>
 
 namespace po = boost::program_options;
 
@@ -44,22 +45,28 @@ int main ( int argc, char** argv ) {
         po::options_description desc("Supported options");
         std::string inputFile, ruleFile, ouputJsonFile;
         bool enableWritetoFile = false, enableJsonOut = false;
+        po::variables_map vm;
         
         desc.add_options()
         ("help,h",                                             "Print help message")
         ("input,i",  po::value< std::string >(&inputFile),     "Input log file name")
         ("rule,r",   po::value< std::string >(&ruleFile),      "Rule file name")
         ("write,w",  po::bool_switch(&enableWritetoFile),      "Enable writing fitered output to stdout")
-        ("output,o", po::value< std::string >(&ouputJsonFile), "Output JSON file name to write filtered putput json");
-        
-        po::variables_map vm;
+        ("output,o", po::value< std::string >(&ouputJsonFile), "Output JSON file name to write filtered putput json")
+        ("version,v", "Version Details" );
         
         try{
             po::store(po::parse_command_line(argc, argv, desc), vm);
             po::notify(vm);    
+
+            if (vm.count("version") ) {
+                std::cerr << "Version : " << g_GIT_SHA1 << std::endl;
+                exit(0);
+            }
             
             if (vm.count("help") || 1 == argc ) {
                 std::cerr << desc << std::endl;
+                std::cerr << "Version : " << g_GIT_SHA1 << std::endl;
                 exit(0);
             }
             

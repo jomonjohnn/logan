@@ -8,6 +8,10 @@ OPTION (BUILD_SHARED_LIBS "Build shared libraries." ON)
 #Add any other header files
 include_directories( ${CMAKE_SOURCE_DIR}/include )
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/gitrev/")
+include(GetGitRevisionDescription)
+get_git_head_revision(GIT_REFSPEC GIT_SHA1)
+
 #Detect compiler and act accordingly
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     option(CMAKE_CXX_VERBOSE "Verbose compilation output?" OFF)
